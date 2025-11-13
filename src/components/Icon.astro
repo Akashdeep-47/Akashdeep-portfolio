@@ -7,10 +7,13 @@ interface Props {
 	color?: string;
 	gradient?: boolean;
 	size?: string;
+	description?: string;
 }
 
-const { color = 'currentcolor', gradient, icon, size } = Astro.props;
+const { color = 'currentcolor', gradient, icon, size, description } = Astro.props;
 const iconPath = iconPaths[icon];
+
+const isFilledIcon = icon === 'leetcode';
 
 const attrs: HTMLAttributes<'svg'> = {};
 if (size) attrs.style = { '--size': size };
@@ -23,9 +26,13 @@ const gradientId = 'icon-gradient-' + Math.round(Math.random() * 10e12).toString
 	width="40"
 	height="40"
 	viewBox="0 0 256 256"
-	aria-hidden="true"
-	stroke={gradient ? `url(#${gradientId})` : color}
-	fill={gradient ? `url(#${gradientId})` : color}
+	aria-hidden={description ? 'false' : 'true'}
+	aria-label={description}
+	stroke={isFilledIcon ? 'none' : (gradient ? `url(#${gradientId})` : color)}
+	fill={isFilledIcon ? (gradient ? `url(#${gradientId})` : color) : 'none'}
+	stroke-width="16"
+	stroke-linecap="round"
+	stroke-linejoin="round"
 	{...attrs}
 >
 	<g set:html={iconPath} />
