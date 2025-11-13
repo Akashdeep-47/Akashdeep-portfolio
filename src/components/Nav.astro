@@ -4,9 +4,10 @@ import type { iconPaths } from './IconPaths';
 import ThemeToggle from './ThemeToggle.astro';
 
 /** Main menu items */
-const textLinks: { label: string; href: string }[] = [
+const textLinks: { label: string; href: string; target?: string; rel?: string }[] = [
 	{ label: 'Home', href: '/' },
-	{ label: 'Work', href: '/work/' },
+	{ label: 'Projects', href: '/projects/' },
+	{ label: 'Resume', href: '/resume.pdf', target: '_blank', rel: 'noopener noreferrer' },
 	{ label: 'About', href: '/about/' },
 ];
 
@@ -46,9 +47,9 @@ const isCurrentPage = (href: string) => {
 	<noscript>
 		<ul class="nav-items">
 			{
-				textLinks.map(({ label, href }) => (
+				textLinks.map(({ label, href, target, rel }) => (
 					<li>
-						<a aria-current={isCurrentPage(href) ? 'page' : null} class="link" href={href}>
+						<a aria-current={isCurrentPage(href) ? 'page' : null} class="link" href={href} target={target} rel={rel}>
 							{label}
 						</a>
 					</li>
@@ -71,17 +72,17 @@ const isCurrentPage = (href: string) => {
 		</div>
 	</noscript>
 	<div id="menu-content" hidden>
-		<ul class="nav-items">
-			{
-				textLinks.map(({ label, href }) => (
-					<li>
-						<a aria-current={isCurrentPage(href) ? 'page' : null} class="link" href={href}>
-							{label}
-						</a>
-					</li>
-				))
-			}
-		</ul>
+				<ul class="nav-items">
+					{
+						textLinks.map(({ label, href, target, rel }) => (
+							<li>
+								<a aria-current={isCurrentPage(href) ? 'page' : null} class="link" href={href} target={target} rel={rel}>
+									{label}
+								</a>
+							</li>
+						))
+					}
+				</ul>
 		<div class="menu-footer">
 			<div class="socials">
 				{
