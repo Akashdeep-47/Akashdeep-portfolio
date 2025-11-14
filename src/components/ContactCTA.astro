@@ -4,11 +4,39 @@ import Icon from './Icon.astro';
 ---
 
 <aside>
-	<h2>Interested in working together?</h2>
-	<CallToAction href="mailto:akashdeepg06@gmail.com">
-		Send Me a Message
-		<Icon icon="paper-plane-tilt" size="1.2em" />
-	</CallToAction>
+	<header class="section-header stack gap-2 lg:gap-4">
+		<h3>Contact Me</h3>
+	</header>
+	<div class="contact-details-and-form">
+		<div class="contact-info">
+			<h3>Akashdeep Gupta</h3>
+			<p><strong>Email:</strong> akashdeepg06@gmail.com</p>
+			<p><strong>Mobile:</strong> +91 9876543210 (Placeholder)</p>
+			<p><strong>Location:</strong> Gurugram, India</p>
+		</div>
+		<form class="contact-form">
+			<div class="form-group">
+				<label for="name">Name:</label>
+				<input type="text" id="name" name="name" required />
+			</div>
+			<div class="form-group">
+				<label for="email">Email:</label>
+				<input type="email" id="email" name="email" required />
+			</div>
+			<div class="form-group">
+				<label for="subject">Subject:</label>
+				<input type="text" id="subject" name="subject" required />
+			</div>
+			<div class="form-group">
+				<label for="message">Message:</label>
+				<textarea id="message" name="message" rows="5" required></textarea>
+			</div>
+			<CallToAction href="mailto:akashdeepg06@gmail.com">
+				Send Me a Message
+				<Icon icon="paper-plane-tilt" size="1.2em" />
+			</CallToAction>
+		</form>
+	</div>
 </aside>
 
 <style>
@@ -24,10 +52,16 @@ import Icon from './Icon.astro';
 		box-shadow: var(--shadow-sm);
 	}
 
-	h2 {
-		font-size: var(--text-xl);
+	.section-header {
+		justify-self: center;
 		text-align: center;
-		max-width: 15ch;
+		max-width: 50ch;
+		font-size: var(--text-md);
+		color: var(--gray-300);
+	}
+
+	.section-header h3 {
+		font-size: var(--text-2xl);
 	}
 
 	@media (min-width: 50em) {
@@ -38,9 +72,95 @@ import Icon from './Icon.astro';
 			justify-content: space-between;
 		}
 
-		h2 {
-			font-size: var(--text-3xl);
+		.section-header {
+			grid-area: header;
+			font-size: var(--text-lg);
+		}
+
+		.section-header h3 {
+			font-size: var(--text-4xl);
+		}
+	}
+
+	.contact-details-and-form {
+		display: flex;
+		flex-direction: column;
+		gap: 3rem;
+		width: 100%;
+		max-width: 800px;
+	}
+
+	.contact-info {
+		text-align: center;
+	}
+
+	.contact-info h3 {
+		font-size: var(--text-xl);
+		margin-bottom: 1rem;
+		color: var(--gray-0);
+	}
+
+	.contact-info p {
+		margin-bottom: 0.5rem;
+		color: var(--gray-300);
+	}
+
+	.contact-form {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	.form-group {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.form-group label {
+		margin-bottom: 0.5rem;
+		font-weight: bold;
+		color: var(--gray-0);
+	}
+
+	.form-group input[type="text"],
+	.form-group input[type="email"],
+	.form-group textarea {
+		padding: 0.75rem;
+		border: 1px solid var(--gray-700);
+		border-radius: 0.5rem;
+		background-color: var(--gray-900);
+		color: var(--gray-0);
+		font-size: var(--text-base);
+	}
+
+	.form-group input[type="text"]:focus,
+	.form-group input[type="email"]:focus,
+	.form-group textarea:focus {
+		outline: none;
+		border-color: var(--accent-regular);
+		box-shadow: 0 0 0 3px rgba(var(--accent-regular-rgb), 0.2);
+	}
+
+	/* Styling for the CallToAction button inside the form */
+	.contact-form .call-to-action { /* Assuming CallToAction renders a button or a link with this class */
+		margin-top: 1rem; /* Add some space above the button */
+	}
+
+	@media (min-width: 50em) {
+		.contact-details-and-form {
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: flex-start;
+		}
+
+		.contact-info {
 			text-align: left;
+			flex: 1;
+		}
+
+		.contact-form {
+			flex: 2;
+			max-width: 500px;
 		}
 	}
 </style>
