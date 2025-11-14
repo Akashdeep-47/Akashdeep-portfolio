@@ -4,46 +4,51 @@ import Icon from './Icon.astro';
 ---
 
 <aside id="contact">
-	<div class="contact-details-wrapper">
-		<header class="section-header stack gap-2 lg:gap-4">
-			<h3>Contact Me</h3>
-		</header>
-		<div class="contact-info">
-			<h3>Akashdeep Gupta</h3>
-			<p><i class="fa-regular fa-envelope"></i> akashdeepg06@gmail.com</p>
-			<p><i class="fa-solid fa-mobile-screen-button"></i> +91 6392376517</p>
-			<p><i class="fa-solid fa-location-dot"></i> Gurugram, India</p>
+	<header class="section-header stack gap-2 lg:gap-4">
+		<h3>Contact Me</h3>
+		<p>Reach out to discuss collaborations, projects, or just to say hello!</p>
+	</header>
+	<div class="contact-content-wrapper">
+		<div class="contact-details-wrapper">
+			<div class="contact-info">
+				<h3>Akashdeep Gupta</h3>
+				<p><i class="fa-regular fa-envelope"></i> akashdeepg06@gmail.com</p>
+				<p><i class="fa-solid fa-mobile-screen-button"></i> +91 6392376517</p>
+				<p><i class="fa-solid fa-location-dot"></i> Gurugram, India</p>
+				<p><i class="fa-brands fa-linkedin"></i> <a href="https://www.linkedin.com/in/akashdeep-47/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+				<p><i class="fa-brands fa-twitter"></i> <a href="https://twitter.com/akashdeep_47" target="_blank" rel="noopener noreferrer">Twitter</a></p>
+			</div>
 		</div>
+		<form class="contact-form">
+			<div class="form-group">
+				<label for="name">Name:</label>
+				<input type="text" id="name" name="name" required />
+			</div>
+			<div class="form-group">
+				<label for="email">Email:</label>
+				<input type="email" id="email" name="email" required />
+			</div>
+			<div class="form-group">
+				<label for="subject">Subject:</label>
+				<input type="text" id="subject" name="subject" required />
+			</div>
+			<div class="form-group">
+				<label for="message">Message:</label>
+				<textarea id="message" name="message" rows="5" required></textarea>
+			</div>
+			<CallToAction href="mailto:akashdeepg06@gmail.com">
+				Send Me a Message
+				<Icon icon="paper-plane-tilt" size="1.2em" />
+			</CallToAction>
+		</form>
 	</div>
-	<form class="contact-form">
-		<div class="form-group">
-			<label for="name">Name:</label>
-			<input type="text" id="name" name="name" required />
-		</div>
-		<div class="form-group">
-			<label for="email">Email:</label>
-			<input type="email" id="email" name="email" required />
-		</div>
-		<div class="form-group">
-			<label for="subject">Subject:</label>
-			<input type="text" id="subject" name="subject" required />
-		</div>
-		<div class="form-group">
-			<label for="message">Message:</label>
-			<textarea id="message" name="message" rows="5" required></textarea>
-		</div>
-		<CallToAction href="mailto:akashdeepg06@gmail.com">
-			Send Me a Message
-			<Icon icon="paper-plane-tilt" size="1.2em" />
-		</CallToAction>
-	</form>
 </aside>
 
 <style>
 	aside {
 		display: flex;
 		flex-direction: column;
-		align-items: center; /* Keep for mobile centering */
+		align-items: center;
 		gap: 3rem;
 		border-top: 1px solid var(--gray-800);
 		border-bottom: 1px solid var(--gray-800);
@@ -60,14 +65,21 @@ import Icon from './Icon.astro';
 		color: var(--gray-300);
 	}
 
-		.section-header h3 {
-			font-size: var(--text-4xl) !important;
-		}
+	.section-header h3 {
+		font-size: var(--text-4xl) !important;
+	}
+
+	.contact-content-wrapper {
+		display: flex;
+		flex-direction: column;
+		gap: 3rem;
+		width: 100%;
+	}
 
 	.contact-details-wrapper {
 		display: flex;
 		flex-direction: column;
-		gap: 1rem; /* Optimized gap */
+		gap: 1rem;
 		width: 100%;
 		padding: 2rem;
 		border: 1px solid var(--gray-800);
@@ -79,53 +91,54 @@ import Icon from './Icon.astro';
 	@media (min-width: 50em) {
 		aside {
 			padding: 7.5rem;
-			display: grid; /* Use grid for desktop layout */
-			grid-template-columns: 1fr 1fr; /* Equal columns for details and form */
+		}
+
+		.contact-content-wrapper {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
 			gap: 3rem;
-			align-items: flex-start;
+			width: 100%; /* Ensure it takes full width within aside */
+			max-width: var(--wrapper-width); /* Constrain content width */
 		}
 
 		.contact-details-wrapper {
-			grid-column: 1 / 2; /* Wrapper in the first column */
-			padding: 3rem;
-			align-items: center; /* Center content horizontally */
-			text-align: center; /* Center text within the wrapper */
+			padding: 1.5rem;
+			/* Removed align-items: center; */
+			text-align: left; /* Left align content */
+			/* Removed max-width and margin: 0 auto; to make it fill its column */
+			aspect-ratio: auto; /* Remove aspect-ratio to allow height to adjust */
 		}
 
 		.section-header {
 			font-size: var(--text-lg);
-			text-align: left; /* Left align header text */
-			justify-self: flex-start; /* Align header to the start of its grid area */
-			max-width: none; /* Remove max-width for desktop */
-		}
-
-		.contact-info {
-			text-align: center; /* Center text within the wrapper */
+			/* Removed desktop specific text-align and justify-self overrides */
 		}
 	}
 
 	.contact-info {
-		text-align: center; /* Default to center for mobile */
+		text-align: left; /* Ensure contact info text is left-aligned */
 	}
 
 	.contact-info h3 {
 		font-size: var(--text-xl);
-		margin-bottom: 1rem;
+		margin-bottom: 2rem; /* Increased margin for more space */
 		color: var(--gray-0);
 	}
 
 	.contact-info p {
-		margin-bottom: 0.5rem;
+		margin-bottom: 1.5rem; /* Increased margin for more space between details */
 		color: var(--gray-300);
-		display: flex; /* Use flexbox for icon and text alignment */
-		align-items: center; /* Vertically align icon and text */
-		justify-content: flex-start; /* Left align the icon and text horizontally */
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		font-size: var(--text-md); /* Slightly decreased font size */
+		font-weight: bold; /* Bolder style */
 	}
 
-	.contact-info i { /* Target all Font Awesome icons */
+	.contact-info i {
 		margin-right: 0.5em;
-		font-size: 1.2em; /* Match previous icon size */
-		color: var(--accent-regular); /* Example color, adjust as needed */
+		font-size: 1.2em;
+		color: var(--accent-regular);
 	}
 
 	.contact-form {
@@ -165,8 +178,7 @@ import Icon from './Icon.astro';
 		box-shadow: 0 0 0 3px rgba(var(--accent-regular-rgb), 0.2);
 	}
 
-	/* Styling for the CallToAction button inside the form */
-	.contact-form .call-to-action { /* Assuming CallToAction renders a button or a link with this class */
-		margin-top: 1rem; /* Add some space above the button */
+	.contact-form .call-to-action {
+		margin-top: 1rem;
 	}
 </style>
