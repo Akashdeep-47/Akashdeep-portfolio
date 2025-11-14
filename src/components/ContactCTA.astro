@@ -4,46 +4,46 @@ import Icon from './Icon.astro';
 ---
 
 <aside>
-	<header class="section-header stack gap-2 lg:gap-4">
-		<h3>Contact Me</h3>
-	</header>
-	<div class="contact-details-and-form">
+	<div class="contact-details-wrapper">
+		<header class="section-header stack gap-2 lg:gap-4">
+			<h3>Contact Me</h3>
+		</header>
 		<div class="contact-info">
 			<h3>Akashdeep Gupta</h3>
 			<p><strong>Email:</strong> akashdeepg06@gmail.com</p>
 			<p><strong>Mobile:</strong> +91 9876543210 (Placeholder)</p>
 			<p><strong>Location:</strong> Gurugram, India</p>
 		</div>
-		<form class="contact-form">
-			<div class="form-group">
-				<label for="name">Name:</label>
-				<input type="text" id="name" name="name" required />
-			</div>
-			<div class="form-group">
-				<label for="email">Email:</label>
-				<input type="email" id="email" name="email" required />
-			</div>
-			<div class="form-group">
-				<label for="subject">Subject:</label>
-				<input type="text" id="subject" name="subject" required />
-			</div>
-			<div class="form-group">
-				<label for="message">Message:</label>
-				<textarea id="message" name="message" rows="5" required></textarea>
-			</div>
-			<CallToAction href="mailto:akashdeepg06@gmail.com">
-				Send Me a Message
-				<Icon icon="paper-plane-tilt" size="1.2em" />
-			</CallToAction>
-		</form>
 	</div>
+	<form class="contact-form">
+		<div class="form-group">
+			<label for="name">Name:</label>
+			<input type="text" id="name" name="name" required />
+		</div>
+		<div class="form-group">
+			<label for="email">Email:</label>
+			<input type="email" id="email" name="email" required />
+		</div>
+		<div class="form-group">
+			<label for="subject">Subject:</label>
+			<input type="text" id="subject" name="subject" required />
+		</div>
+		<div class="form-group">
+			<label for="message">Message:</label>
+			<textarea id="message" name="message" rows="5" required></textarea>
+		</div>
+		<CallToAction href="mailto:akashdeepg06@gmail.com">
+			Send Me a Message
+			<Icon icon="paper-plane-tilt" size="1.2em" />
+		</CallToAction>
+	</form>
 </aside>
 
 <style>
 	aside {
 		display: flex;
 		flex-direction: column;
-		align-items: center;
+		align-items: center; /* Keep for mobile centering */
 		gap: 3rem;
 		border-top: 1px solid var(--gray-800);
 		border-bottom: 1px solid var(--gray-800);
@@ -64,34 +64,60 @@ import Icon from './Icon.astro';
 		font-size: var(--text-2xl);
 	}
 
+	.contact-details-wrapper {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		width: 100%;
+		padding: 2rem;
+		border: 1px solid var(--gray-800);
+		border-radius: 0.75rem;
+		background-color: var(--gray-999_40);
+		box-shadow: var(--shadow-sm);
+	}
+
 	@media (min-width: 50em) {
 		aside {
 			padding: 7.5rem;
-			flex-direction: row;
-			flex-wrap: wrap;
-			justify-content: space-between;
+			display: grid; /* Use grid for desktop layout */
+			grid-template-columns: 1fr 1fr; /* Equal columns for details and form */
+			gap: 3rem;
+			align-items: flex-start;
+		}
+
+		.contact-details-wrapper {
+			grid-column: 1 / 2; /* Wrapper in the first column */
+			padding: 3rem;
 		}
 
 		.section-header {
-			grid-area: header;
 			font-size: var(--text-lg);
+			text-align: left;
+			justify-self: flex-start;
+			max-width: none; /* Remove max-width for desktop */
 		}
 
 		.section-header h3 {
 			font-size: var(--text-4xl);
 		}
-	}
 
-	.contact-details-and-form {
-		display: flex;
-		flex-direction: column;
-		gap: 3rem;
-		width: 100%;
-		max-width: 800px;
+		.contact-info {
+			text-align: left;
+		}
+
+		.contact-form {
+			grid-column: 2 / 3; /* Form in the second column */
+			max-width: none; /* Remove max-width as it's now in a grid column */
+			padding: 2rem; /* Add padding to the form */
+			border: 1px solid var(--gray-800);
+			border-radius: 0.75rem;
+			background-color: var(--gray-999_40);
+			box-shadow: var(--shadow-sm);
+		}
 	}
 
 	.contact-info {
-		text-align: center;
+		text-align: center; /* Default to center for mobile */
 	}
 
 	.contact-info h3 {
@@ -109,6 +135,7 @@ import Icon from './Icon.astro';
 		display: flex;
 		flex-direction: column;
 		gap: 1.5rem;
+		width: 100%;
 	}
 
 	.form-group {
@@ -144,23 +171,5 @@ import Icon from './Icon.astro';
 	/* Styling for the CallToAction button inside the form */
 	.contact-form .call-to-action { /* Assuming CallToAction renders a button or a link with this class */
 		margin-top: 1rem; /* Add some space above the button */
-	}
-
-	@media (min-width: 50em) {
-		.contact-details-and-form {
-			flex-direction: row;
-			justify-content: space-between;
-			align-items: flex-start;
-		}
-
-		.contact-info {
-			text-align: left;
-			flex: 1;
-		}
-
-		.contact-form {
-			flex: 2;
-			max-width: 500px;
-		}
 	}
 </style>
