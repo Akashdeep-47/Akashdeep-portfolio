@@ -10,9 +10,9 @@ import Icon from './Icon.astro';
 		</header>
 		<div class="contact-info">
 			<h3>Akashdeep Gupta</h3>
-			<p><Icon icon="envelope-simple" size="1.2em" /> akashdeepg06@gmail.com</p>
-			<p><Icon icon="phone" size="1.2em" /> +91 9876543210 (Placeholder)</p>
-			<p><Icon icon="map-pin" size="1.2em" /> Gurugram, India</p>
+			<p><i class="fa-regular fa-envelope"></i> akashdeepg06@gmail.com</p>
+			<p><i class="fa-solid fa-mobile-screen-button"></i> +91 6392376517</p>
+			<p><i class="fa-solid fa-location-dot"></i> Gurugram, India</p>
 		</div>
 	</div>
 	<form class="contact-form">
@@ -60,14 +60,14 @@ import Icon from './Icon.astro';
 		color: var(--gray-300);
 	}
 
-	.section-header h3 {
-		font-size: var(--text-2xl);
-	}
+		.section-header h3 {
+			font-size: var(--text-4xl) !important;
+		}
 
 	.contact-details-wrapper {
 		display: flex;
 		flex-direction: column;
-		gap: 2rem;
+		gap: 1rem; /* Optimized gap */
 		width: 100%;
 		padding: 2rem;
 		border: 1px solid var(--gray-800);
@@ -88,31 +88,19 @@ import Icon from './Icon.astro';
 		.contact-details-wrapper {
 			grid-column: 1 / 2; /* Wrapper in the first column */
 			padding: 3rem;
+			align-items: center; /* Center content horizontally */
+			text-align: center; /* Center text within the wrapper */
 		}
 
 		.section-header {
 			font-size: var(--text-lg);
-			text-align: left;
-			justify-self: flex-start;
+			text-align: left; /* Left align header text */
+			justify-self: flex-start; /* Align header to the start of its grid area */
 			max-width: none; /* Remove max-width for desktop */
 		}
 
-		.section-header h3 {
-			font-size: var(--text-4xl);
-		}
-
 		.contact-info {
-			text-align: left;
-		}
-
-		.contact-form {
-			grid-column: 2 / 3; /* Form in the second column */
-			max-width: none; /* Remove max-width as it's now in a grid column */
-			padding: 2rem; /* Add padding to the form */
-			border: 1px solid var(--gray-800);
-			border-radius: 0.75rem;
-			background-color: var(--gray-999_40);
-			box-shadow: var(--shadow-sm);
+			text-align: center; /* Center text within the wrapper */
 		}
 	}
 
@@ -129,6 +117,15 @@ import Icon from './Icon.astro';
 	.contact-info p {
 		margin-bottom: 0.5rem;
 		color: var(--gray-300);
+		display: flex; /* Use flexbox for icon and text alignment */
+		align-items: center; /* Vertically align icon and text */
+		justify-content: flex-start; /* Left align the icon and text horizontally */
+	}
+
+	.contact-info i { /* Target all Font Awesome icons */
+		margin-right: 0.5em;
+		font-size: 1.2em; /* Match previous icon size */
+		color: var(--accent-regular); /* Example color, adjust as needed */
 	}
 
 	.contact-form {
