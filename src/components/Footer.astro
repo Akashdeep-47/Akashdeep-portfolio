@@ -1,17 +1,9 @@
----
+--- 
 import Icon from './Icon.astro';
 ---
 
 <footer>
-	<div class="group">
-		<p>Designed & Developed © 2025 Akashdeep Gupta</p>
-	</div>
-	<p class="socials">
-		<a href="https://twitter.com/akashdeep_47"> Twitter</a>
-		<a href="https://github.com/Akashdeep-47"> GitHub</a>
-		<a href="https://www.linkedin.com/in/akashdeep-47/"> LinkedIn</a>
-		<a href="https://leetcode.com/u/Akashdeep_47/"> LeetCode</a>
-	</p>
+	<p>Designed & Developed © 2025 Akashdeep Gupta</p>
 </footer>
 <style>
 	footer {
@@ -23,6 +15,8 @@ import Icon from './Icon.astro';
 		text-align: center;
 		color: var(--gray-400);
 		font-size: var(--text-sm);
+		align-items: center;
+		justify-content: center;
 	}
 
 	footer a {
@@ -37,34 +31,13 @@ import Icon from './Icon.astro';
 		text-decoration-color: currentColor;
 	}
 
-	.group {
-		display: flex;
-		flex-direction: column;
-		gap: 0.5rem;
-	}
-
-	.socials {
-		display: flex;
-		justify-content: center;
-		gap: 1rem;
-		flex-wrap: wrap;
-	}
-
 	@media (min-width: 50em) {
 		footer {
 			flex-direction: row;
-			justify-content: space-between;
+			justify-content: center;
+			align-items: center;
 			padding: 2.5rem 5rem;
-		}
-
-		.group {
-			flex-direction: row;
-			gap: 1rem;
-			flex-wrap: wrap;
-		}
-
-		.socials {
-			justify-content: flex-end;
 		}
 	}
 </style>
+
