@@ -1,4 +1,5 @@
 ---
+import Grid from '../components/Grid.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 import Hero from '../components/Hero.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
@@ -50,60 +51,86 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 			</section>
 			<section>
 				<h2 class="section-title">Skills</h2>
-				<div class="content">
-					<h4>Programming Languages</h4>
-					<ul>
-						<li>C++</li>
-						<li>Python</li>
-						<li>SQL</li>
-					</ul>
-					<h4>Frameworks</h4>
-					<ul>
-						<li>LangChain</li>
-						<li>LangGraph</li>
-						<li>LangSmith</li>
-						<li>LlamaIndex</li>
-						<li>HuggingFace</li>
-					</ul>
-					<h4>Concepts</h4>
-					<ul>
-						<li>LLMs</li>
-						<li>Agentic AI</li>
-						<li>Transformer</li>
-						<li>Prompt Engineering</li>
-						<li>RESTful APIs</li>
-						<li>Microservices</li>
-						<li>Model Context Protocol (MCP)</li>
-						<li>Retrieval-Augmented Generation (RAG)</li>
-					</ul>
-					<h4>Libraries</h4>
-					<ul>
-						<li>FastAPI</li>
-						<li>Flask</li>
-						<li>Pandas</li>
-						<li>NumPy</li>
-						<li>Scikit-learn</li>
-						<li>Streamlit</li>
-						<li>Copilot KIT</li>
-					</ul>
-					<h4>Databases</h4>
-					<ul>
-						<li>MySQL</li>
-						<li>Azure CosmosDB</li>
-						<li>PostgreSQL</li>
-					</ul>
-					<h4>Tools & Technologies</h4>
-					<ul>
-						<li>Azure Cloud</li>
-						<li>Azure OpenAI</li>
-						<li>Azure DevOps</li>
-						<li>GitHub Copilot</li>
-						<li>Redis</li>
-						<li>Postman</li>
-						<li>VS Code</li>
-						<li>Git/GitHub</li>
-						<li>Jupyter Notebook</li>
-					</ul>
+				<div class="gallery">
+					<Grid variant="small">
+						<li class="mention-card">
+							<div>
+								<h4>Programming Languages</h4>
+								<ul>
+									<li>C++</li>
+									<li>Python</li>
+									<li>SQL</li>
+								</ul>
+							</div>
+						</li>
+						<li class="mention-card">
+							<div>
+								<h4>Frameworks</h4>
+								<ul>
+									<li>LangChain</li>
+									<li>LangGraph</li>
+									<li>LangSmith</li>
+									<li>LlamaIndex</li>
+									<li>HuggingFace</li>
+								</ul>
+							</div>
+						</li>
+						<li class="mention-card">
+							<div>
+								<h4>Concepts</h4>
+								<ul>
+									<li>LLMs</li>
+									<li>Agentic AI</li>
+									<li>Transformer</li>
+									<li>Prompt Engineering</li>
+									<li>RESTful APIs</li>
+									<li>Microservices</li>
+									<li>Model Context Protocol (MCP)</li>
+									<li>Retrieval-Augmented Generation (RAG)</li>
+								</ul>
+							</div>
+						</li>
+						<li class="mention-card">
+							<div>
+								<h4>Libraries</h4>
+								<ul>
+									<li>FastAPI</li>
+									<li>Flask</li>
+									<li>Pandas</li>
+									<li>NumPy</li>
+									<li>Scikit-learn</li>
+									<li>Streamlit</li>
+									<li>Copilot KIT</li>
+								</ul>
+							</div>
+						</li>
+						<li class="mention-card">
+							<div>
+								<h4>Databases</h4>
+								<ul>
+									<li>MySQL</li>
+									<li>Azure CosmosDB</li>
+									<li>PostgreSQL</li>
+								</ul>
+							</div>
+						</li>
+						<li class="mention-card">
+							<div>
+								<h4>Tools & Technologies</h4>
+								<ul>
+									<li>Azure Cloud</li>
+									<li>Azure OpenAI</li>
+									<li>Azure DevOps</li>
+									<li>GitHub Copilot</li>
+									<li>Redis</li>
+									<li>Postman</li>
+									<li>VS Code</li>
+									<li>Git/GitHub</li>
+									<li>Jupyter Notebook</li>
+								</ul>
+							</div>
+						</li>
+					</Grid>
 				</div>
 			</section>
 		</main>
@@ -155,6 +182,42 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 	.content :global(a:hover),
 	.content :global(a:focus) {
 		text-decoration-color: currentColor;
+	}
+
+	.gallery {
+		grid-column: 2 / 4;
+	}
+
+	.mention-card {
+		display: flex;
+		flex-direction: column; /* Added to stack items vertically */
+		padding: 1.5rem;
+		justify-content: flex-start; /* Align content to the top */
+		align-items: flex-start; /* Align content to the left */
+		text-align: left; /* Align text to the left */
+		border: 1px solid var(--gray-800);
+		border-radius: 1.5rem;
+		color: var(--gray-300);
+		background: var(--gradient-subtle);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.mention-card h4 {
+		margin-bottom: 1rem; /* Space between heading and list */
+		color: var(--gray-0);
+		text-align: center; /* Center the title */
+		width: 100%; /* Ensure it takes full width to center properly */
+	}
+
+	.mention-card ul {
+		list-style-type: disc; /* Display bullets */
+		padding-left: 1.5rem; /* Add padding for bullets */
+		text-align: left; /* Ensure list items are left-aligned */
+		width: 100%; /* Ensure it takes full width */
+	}
+
+	.mention-card li {
+		margin-bottom: 0.5rem; /* Space between list items */
 	}
 
 	@media (min-width: 50em) {
