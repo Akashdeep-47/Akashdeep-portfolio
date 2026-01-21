@@ -195,25 +195,37 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 		justify-content: flex-start; /* Align content to the top */
 		align-items: flex-start; /* Align content to the left */
 		text-align: left; /* Align text to the left */
-		border: 1px solid var(--gray-800);
+		border: 1.5px solid var(--gray-800);
 		border-radius: 1.5rem;
 		color: var(--gray-300);
 		background: var(--gradient-subtle);
 		box-shadow: var(--shadow-sm);
 	}
 
+	.mention-card > div { /* Target the div directly inside mention-card */
+		text-align: center; /* Center the content within this div */
+		width: 100%; /* Ensure it takes full width */
+	}
+
 	.mention-card h4 {
 		margin-bottom: 1rem; /* Space between heading and list */
 		color: var(--gray-0);
 		text-align: center; /* Center the title */
-		width: 100%; /* Ensure it takes full width to center properly */
+		font-family: var(--font-brand); /* Use brand font for title */
+		text-decoration: underline; /* Add underline to the title */
+		text-decoration-thickness: 1px; /* Make the underline very thin */
+		text-underline-offset: 0.2em; /* Add space between title and underline */
 	}
 
 	.mention-card ul {
-		list-style-type: disc; /* Display bullets */
-		padding-left: 1.5rem; /* Add padding for bullets */
-		text-align: left; /* Ensure list items are left-aligned */
-		width: 100%; /* Ensure it takes full width */
+		list-style-type: none; /* Remove bullets */
+		padding: 0; /* Remove padding for bullets */
+		text-align: center; /* Center the list items */
+		font-family: var(--font-body); /* Use body font for list items */
+	}
+
+	.mention-card ul li {
+		margin-bottom: 0.5rem; /* Space between list items */
 	}
 
 	.mention-card li {
